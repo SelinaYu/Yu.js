@@ -1,0 +1,19 @@
+{
+  "name": "yu",
+  "version": "1.0.0",
+  "description": "Yu.js is a utility javascript library accumulated in the development practice.",
+  "main": "Yu.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SelinaYu/Yu.git"
+  },
+  "author": "selinayu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SelinaYu/Yu/issues"
+  },
+  "homepage": "https://github.com/SelinaYu/Yu#readme"
+}

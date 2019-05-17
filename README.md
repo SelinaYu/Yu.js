@@ -17,7 +17,7 @@ npm i Yu
 ```
 
 ```
-import Yu from 'yu';
+import Yu from 'yu-tool';
 
 Yu.formatFloat(value,n);
 ```

@@ -98,9 +98,42 @@
     return formatstr;  
   }
 
+/**
+* 验证身份证号号码的方法
+* @param cardNo 传入身份证号
+* @return Boolean
+*/
+function isCardNo(cardNo) {
+    // 身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X 
+    var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+    if (!reg.test(cardNo)) {
+        return false;
+    }
+    return true;
+}
+
+/**
+ * 格式化金额 加逗号
+ * @param {*} s 金额
+ * @param {*} n 小数点位数
+ */
+function formatMoney(s, n) {
+    if (s === '') return s;
+    n = n >= 0 && n <= 20 ? n : 2;
+    s = parseFloat((s + '').replace(/[^\d\.-]/g, '')).toFixed(n) + '';
+    var l = s.split('.')[0].split('').reverse(), r = s.split('.')[1];
+    var t = '';
+    for (var i = 0; i < l.length; i++) {
+        t += l[i] + ((i + 1) % 3 === 0 && (i + 1) !== l.length ? ',' : '');
+    }
+    return r ? t.split('').reverse().join('') + '.' + r : t.split('').reverse().join('');
+}
+
   Yu.formatFloat = formatFloat;
   Yu.isPhone = isPhone;
   Yu.formatDate =  formatDate;
+  Yu.isCardNo = isCardNo;
+  Yu.formatMoney = formatMoney;
 
   
   /**

@@ -16,6 +16,7 @@ Yu.js is a utility javascript library accumulated in the development practice. I
 npm i Yu
 ```
 
+### Example
 ```
 import Yu from 'yu-tool';
 

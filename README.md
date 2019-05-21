@@ -23,5 +23,7 @@ import Yu from 'yu-tool';
 Yu.formatFloat(value,n);
 ```
 
-## Documentation
+
+### [Documentation](/doc.md)
+
 

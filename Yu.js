@@ -114,8 +114,8 @@ function isCardNo(cardNo) {
 
 /**
  * 格式化金额 加逗号
- * @param {*} s 金额
- * @param {*} n 小数点位数
+ * @param  s 金额
+ * @param  n 小数点位数
  */
 function formatMoney(s, n) {
     if (s === '') return s;
@@ -128,12 +128,76 @@ function formatMoney(s, n) {
     }
     return r ? t.split('').reverse().join('') + '.' + r : t.split('').reverse().join('');
 }
+/**
+ * 生成某个范围内的随机数
+ * 
+ * @param  min 范围最小值
+ * @param  max  范围最大值
+ * @returns 
+ */
+function randNum(min, max) {
+    return Math.floor( min + Math.random() * ((max + 1) - min))
+}
+
+/**
+ * 判断是否是一个空对象
+ * 
+ * @param {any} obj 
+ * @returns 
+ */
+function isEmptyObject(obj) {
+    if (!obj || typeof obj !== 'object' || Array.isArray(obj))
+        return false;
+    return !Object.keys(obj).length;
+};
+
+/**
+ * 字符串大小写转换
+ */
+ 
+ function handleCase(str, type) {
+     switch (type) {
+        case 1: // 首字母转成大写
+            return str.replace(/\b\w+\b/g, function(word){
+                return word.slice(0,1).toUpperCase() + word.slice(1).toLowerCase();  
+            });
+        case 2:// 首字母小写
+            return str.replace(/\b\w+\b/g, function (word) {
+                return word.substring(0, 1).toLowerCase() + word.substring(1).toUpperCase();
+            });
+        case 3: // 大写变小写，小写变大写（大小写变换）
+            return toggleCase(str);
+        case 4:// 全部大写
+            return str.toUpperCase();
+        case 5:// 全部小写
+            return str.toLowerCase();
+        default:
+            return str;        
+     }
+     function toggleCase(str) {
+        var itemText = "";
+        str.split("").forEach(
+            function (item) {
+                if (/^([a-z]+)/.test(item)) {
+                    itemText += item.toUpperCase();
+                } else if (/^([A-Z]+)/.test(item)) {
+                    itemText += item.toLowerCase();
+                } else {
+                    itemText += item;
+                }
+            });
+        return itemText;
+    }
+ }
 
   Yu.formatFloat = formatFloat;
   Yu.isPhone = isPhone;
   Yu.formatDate =  formatDate;
   Yu.isCardNo = isCardNo;
   Yu.formatMoney = formatMoney;
+  Yu.randNum = randNum;
+  Yu.isEmptyObject = isEmptyObject;
+  Yu.handleCase = handleCase;
 
   
   /**

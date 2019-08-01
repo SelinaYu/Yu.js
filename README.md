@@ -13,7 +13,7 @@ Yu.js is a utility javascript library accumulated in the development practice. I
 ### Using npm
 
 ```
-npm i Yu
+npm i yu-tool
 ```
 
 ### Example

@@ -189,6 +189,62 @@ function isEmptyObject(obj) {
         return itemText;
     }
  }
+ /**
+  * 防抖函数
+  * 
+  * @param {any} fn 
+  * @param {any} time 
+  * @returns 
+  */
+ function debounce(fn,time){
+    let timer = null;
+    return function(){
+        clearTimeout(timer);
+        timer = setTimeout(() => fn(), time)
+    }
+}
+/**
+ * 节流函数
+ * 
+ * @param {any} event 
+ * @param {any} time 
+ * @returns 
+ */
+function throttle(event, time) {
+    let pre = 0;
+    let timer = null;
+    return function (...args) {
+      if (Date.now() - pre > time) {
+        clearTimeout(timer);
+        timer = null;
+        pre = Date.now();
+        event.apply(this, args);
+      } else if (!timer) {
+        timer = setTimeout(() => {
+          event.apply(this, args);
+        }, time);
+      }
+    }
+  }
+  /**
+   * handle 滚动穿透
+   * 
+   * @param {any} visible 
+   */
+  function rollThrough(visible){
+    let top = '';
+    let bodyEl = document.querySelector('body');
+    if (visible) {
+      top = window.scrollY
+      bodyEl.style.position = 'fixed'
+      bodyEl.style.top = -top + 'px'
+    } else {
+      bodyEl.style.position = ''
+      bodyEl.style.top = ''
+      window.scrollTo(0, top) // 回到原先的top
+    }
+  }
+
 
   Yu.formatFloat = formatFloat;
   Yu.isPhone = isPhone;
@@ -198,6 +254,9 @@ function isEmptyObject(obj) {
   Yu.randNum = randNum;
   Yu.isEmptyObject = isEmptyObject;
   Yu.handleCase = handleCase;
+  Yu.debounce = debounce;
+  Yu.throttle = throttle;
+  Yu.rollThrough = rollThrough;
 
   
   /**

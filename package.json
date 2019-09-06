@@ -1,6 +1,6 @@
 {
   "name": "yu-tool",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Yu.js is a utility javascript library accumulated in the development practice.",
   "main": "Yu.js",
   "scripts": {

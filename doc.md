@@ -95,3 +95,12 @@ parseURLParam(url);
    name: ["yu", "Bob"]
  }
 ```
+
+### **13) isObject(val)**
+
+判断数据是不是引用类型的数据 (例如： arrays, functions, objects, regexes, new Number())
+
+```
+isObject(123); // false
+isObject({a: 123}); // true
+```

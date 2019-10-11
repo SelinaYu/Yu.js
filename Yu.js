@@ -270,6 +270,14 @@ function throttle(event, time) {
     return paramsObj;
   }
 
+  /**
+   *  判断是不是引用类型的数据
+   */
+  function isObject(val){
+      let type = typeof val;
+      return type != null && (type === 'object' || type === 'function')
+  }
+
   Yu.formatFloat = formatFloat;
   Yu.isPhone = isPhone;
   Yu.formatDate =  formatDate;
@@ -282,6 +290,7 @@ function throttle(event, time) {
   Yu.throttle = throttle;
   Yu.rollThrough = rollThrough;
   Yu.parseURLParam = parseURLParam;
+  Yu.isObject = isObject;
 
   
   /**

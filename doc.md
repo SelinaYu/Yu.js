@@ -81,3 +81,17 @@ handleCase('aBc', 3) // AbC
 
 解决滚动穿透的问题，`visible` 为布尔值，`true` 的时候表示弹框显示，滚动弹框，底层页面也进行了滚动。`false`表示弹框关闭，复原底层页面原来的状态。
 
+### **12) parseURLParam(url)**
+
+解析URL的参数 params 成对象,URL没有参数时，默认返回空对象。
+
+```
+let url = 'http://www.domain.com?name=yu&name=Bob&city=%E5%8C%97%E4%BA%AC'
+parseURLParam(url);
+
+// 输出
+ {
+   city: "北京",
+   name: ["yu", "Bob"]
+ }
+```

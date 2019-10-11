@@ -245,6 +245,30 @@ function throttle(event, time) {
     }
   }
 
+  /**
+   * 解析URL params成对象
+   */
+  function parseURLParam(url){
+    let paramsObj = {};
+    let urlParams = /.+\?(.+)$/.exec(url);
+    if(!urlParams) { // url没有参数时
+      return paramsObj; 
+    }
+    let paramsStr = urlParams[1];
+    let paramsArr = paramsStr.split('&');
+    paramsArr.forEach(param => {
+        if(/=/.test(param)) {
+            let [key,val] = param.split('=');
+             val = decodeURIComponent(val); // 解码
+            if(paramsObj.hasOwnProperty(key)) {
+                paramsObj[key] = [].concat(paramsObj[key],val); // 重复的参数合并成数组
+            } else {
+              paramsObj[key] = val;
+            }
+        }
+    });
+    return paramsObj;
+  }
 
   Yu.formatFloat = formatFloat;
   Yu.isPhone = isPhone;
@@ -257,6 +281,7 @@ function throttle(event, time) {
   Yu.debounce = debounce;
   Yu.throttle = throttle;
   Yu.rollThrough = rollThrough;
+  Yu.parseURLParam = parseURLParam;
 
   
   /**

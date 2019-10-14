@@ -122,3 +122,16 @@ dataURL的形式如下：data:[<mediatype>][;base64],<data>
 dataURL的形式如下：data:[<mediatype>][;base64],<data>
 ```
 其中mediatype声明了文件类型，遵循MIME规则，如“image/png”、“text/plain”；之后是编码类型。
+
+
+### **16) compressImg(img,option)**
+
+压缩图片，option 对象有三个属性： maxWidth(压缩后的最大宽度), maxHeight(压缩后的最大高度), level(质量压缩)，option默认为
+```
+option = {
+    maxWidth: 50,
+    maxHeight: 50,
+    level: 1
+}
+```
+

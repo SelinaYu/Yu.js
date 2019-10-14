@@ -301,6 +301,36 @@ function throttle(event, time) {
     return new File([ u8arr ], filename, { type: mime });
   };
   
+
+  function compressImg(img, option) {
+    let opt = {
+      maxWidth: 50,
+      maxHeight: 50,
+      level: 1   // 质量压缩
+    };
+    option = option || opt;
+    let imgW = img.width;
+    let imgH = img.height;
+    let resizeW = imgW;
+    let resizeH = imgH;
+    let canvas = document.createElement('canvas');
+    let context = canvas.getContext('2d');
+    if (imgW > option.maxWidth || imgH > option.maxHeight) {
+      let multiple = Math.max(imgW / option.maxWidth, imgH / option.maxHeight);  // 压缩比
+      resizeW = imgW / multiple;
+      resizeH = imgH / multiple;
+    } else {
+      return img;
+    }
+    canvas.width = resizeW;
+    canvas.height = resizeH;
+    context.drawImage(img, 0, 0, resizeW, resizeH);  // 尺寸压缩
+    let base64 = canvas.toDataURL('image/png', option.level);
+    let blob = dataURLtoFile(base64, 'image.png');
+    console.log(blob);
+    console.log(`压缩后大小${blob.size}`);
+    return blob;
+  };
   Yu.formatFloat = formatFloat;
   Yu.isPhone = isPhone;
   Yu.formatDate =  formatDate;
@@ -316,6 +346,7 @@ function throttle(event, time) {
   Yu.isObject = isObject;
   Yu.dataURLtoBlob = dataURLtoBlob;
   Yu.dataURLtoFile = dataURLtoFile;
+  Yu.compressImg = compressImg;
   
   /**
    * 客户端 window.Yu = Yu;

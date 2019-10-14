@@ -104,3 +104,21 @@ parseURLParam(url);
 isObject(123); // false
 isObject({a: 123}); // true
 ```
+
+### **14) dataURLtoBlob(dataurl)**
+
+将 dataURL 转换成 Blob 对象
+```
+dataURL的形式如下：data:[<mediatype>][;base64],<data>
+```
+其中mediatype声明了文件类型，遵循MIME规则，如“image/png”、“text/plain”；之后是编码类型。
+
+
+### **15) dataURLtoFile(dataurl)**
+
+将 dataURL 转换成 File 对象
+
+```
+dataURL的形式如下：data:[<mediatype>][;base64],<data>
+```
+其中mediatype声明了文件类型，遵循MIME规则，如“image/png”、“text/plain”；之后是编码类型。

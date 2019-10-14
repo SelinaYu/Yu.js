@@ -278,6 +278,29 @@ function throttle(event, time) {
       return type != null && (type === 'object' || type === 'function')
   }
 
+  function dataURLtoBlob(dataurl) {
+    let arr = dataurl.split(',');
+    let mime = arr[0].match(/:(.*?);/)[1];
+    let bstr = atob(arr[1]);
+    let n = bstr.length;
+    let u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([ u8arr ], { type: mime });
+  };
+  function dataURLtoFile(dataurl, filename) {
+    let arr = dataurl.split(',');
+    let mime = arr[0].match(/:(.*?);/)[1];
+    let bstr = atob(arr[1]);
+    let n = bstr.length;
+    let u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([ u8arr ], filename, { type: mime });
+  };
+  
   Yu.formatFloat = formatFloat;
   Yu.isPhone = isPhone;
   Yu.formatDate =  formatDate;
@@ -291,7 +314,8 @@ function throttle(event, time) {
   Yu.rollThrough = rollThrough;
   Yu.parseURLParam = parseURLParam;
   Yu.isObject = isObject;
-
+  Yu.dataURLtoBlob = dataURLtoBlob;
+  Yu.dataURLtoFile = dataURLtoFile;
   
   /**
    * 客户端 window.Yu = Yu;
